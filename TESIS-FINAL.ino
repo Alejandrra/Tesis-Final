@@ -118,7 +118,7 @@ void oledView(){
  Cayenne.virtualWrite(V4, BPM); 
 
  //Definir el rango minimo y maximo del sensor temperatura
-if(temp >=30 && temp <=35.9 || temp > 40.0){ //mide temperatura de 36 a 40, si pasa de 40 devuelve ... en oled
+if(temp >=30 && temp <=35.9 || temp > 40.0){ //mide temperatura de 36 a 40, si es de 35.9 devuelve ... en oled
    
    //Envio de datos a Blynk y Cayenne 
    Blynk.virtualWrite(V2, temp);
@@ -130,6 +130,7 @@ if(temp >=30 && temp <=35.9 || temp > 40.0){ //mide temperatura de 36 a 40, si p
     display.display(); 
   }else{
     Blynk.virtualWrite(V2, temp);
+    Cayenne.virtualWrite(V0, temp);
     display.setTextSize(2); 
     display.setCursor(30,50);
     display.print(temp,1); //muestra un decimal, si no le hace cambio muestra mas decimales
